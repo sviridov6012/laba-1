@@ -78,7 +78,7 @@ class Book:
         """
         if pages_read <= 0:
             raise ValueError("Количество прочитанных страниц должно быть положительным.")
-
+        
         return f'Вы прочитали {pages_read} страниц из книги "{self.title}".'
 
     def get_info(self) -> str:
@@ -127,7 +127,7 @@ class Tree:
         """
         if increase < 0:
             raise ValueError("Увеличение высоты не может быть отрицательным.")
-
+        
         self.height += increase
 
     def get_info(self) -> str:
