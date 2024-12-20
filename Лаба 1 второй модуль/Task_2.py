@@ -1,66 +1,25 @@
-class Furniture:
+from task_1 import Car, Book, Tree  # Импортируем классы из предыдущего задания
 
-    def __init__(self, name: str, color: str):
-
-        self.name = name
-        self.color = color
-
-    def get_name(self) -> str:
-
-        return self.name
-
-    def change_color(self, new_color: str) -> None:
-
-        self.color = new_color
-
-    def __str__(self) -> str:
-
-        return f"{self.name} {self.color}"
-
-
-class Chair(Furniture):
-
-    def __init__(self, name: str, color: str, legs: int = 4):
-
-        if legs < 3 or legs > 5:
-            raise ValueError("Количество ножек должно быть от 3 до 5")
-
-        super().__init__(name, color)
-        self.legs = legs
-
-    def sit(self) -> None:
-        pass
-
-
-class Table(Furniture):
-
-    def __init__(self, name: str, color: str, shape: str = "прямоугольник"):
-
-        if shape not in ["овал", "прямоугольник", "круг"]:
-            raise ValueError("Форма должна быть овал, прямоугольник или круг")
-
-        super().__init__(name, color)
-        self.shape = shape
-
-    def put(self, object: str) -> None:
-        """ Ставит объект на стол. """
-        pass
-
-
-# Проверка работоспособности классов
 if __name__ == "__main__":
-    # Инстанцирование классов
+    # Инстанцируем объекты классов
+    car = Car("Toyota", "Camry", 2015)
+    book = Book("1984", "George Orwell", 328)
+    tree = Tree("Oak", 5.0)
+
+    # Проверка метода start_engine с некорректными аргументами
     try:
-        chair1 = Chair("Стул", "Красный", 4)
-        print(f"Создан {chair1}; количество ножек: {chair1.legs}")
+        print(car.start_engine(123))  # Некорректный вызов с числом вместо строки
+    except TypeError:
+        print('Ошибка: неправильные данные')
 
-        chair2 = Chair("Стул", "Синий", 2)  # Неправильное количество ножек
-        print(f"Создан {chair2}; количество ножек: {chair2.legs}")
+    # Проверка метода read с некорректными аргументами
+    try:
+        print(book.read("ten"))  # Некорректный вызов с строкой вместо числа
+    except TypeError:
+        print('Ошибка: неправильные данные')
 
-        table1 = Table("Стол", "Коричневый", "прямоугольник")
-        print(f"Создан {table1}; форма: {table1.shape}")
-
-        table2 = Table("Стол", "Белый", "квадрат")  # Неправильная форма
-        print(f"Создан {table2}; форма: {table2.shape}")
-    except ValueError:
-        print("Ошибка: неправильные данные")
+    # Проверка метода grow с некорректными аргументами
+    try:
+        print(tree.grow("three"))  # Некорректный вызов со строкой вместо числа
+    except TypeError:
+        print('Ошибка: неправильные данные')
